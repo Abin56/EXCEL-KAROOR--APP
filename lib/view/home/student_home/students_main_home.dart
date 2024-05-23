@@ -1,14 +1,15 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/home/drawer/student_drawer.dart';
 import 'package:excel_karror/view/home/student_home/student__homepage.dart';
 import 'package:excel_karror/view/pages/live_classes/students_room/list_room.dart';
 import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
 
 import '../../../main.dart';
 import '../../pages/chat_gpt/screens/chat_screen.dart';
@@ -71,7 +72,7 @@ class _StudentsMainHomeScreenState extends State<StudentsMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/excel_karror/excelKaroor.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),

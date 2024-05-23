@@ -1,9 +1,9 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/model/notice_model/class_level_notice_model.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../widgets/fonts/google_poppins.dart';

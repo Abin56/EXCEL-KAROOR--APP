@@ -1,5 +1,5 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/model/Text_hiden_Controller/password_field.dart';
 import 'package:excel_karror/utils/utils.dart';
 import 'package:excel_karror/view/colors/colors.dart';
@@ -11,6 +11,7 @@ import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:excel_karror/view/widgets/textformfield_login.dart';
 import 'package:excel_karror/widgets/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -43,7 +44,7 @@ class GuardianSignUpFirstScreen extends StatelessWidget {
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/excel_karror/excelKaroor.png',
+            appLogo,
             color: Colors.white,
             fit: BoxFit.cover,
           )),

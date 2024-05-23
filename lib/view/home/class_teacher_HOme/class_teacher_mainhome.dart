@@ -1,8 +1,14 @@
 //ClassTeacherMainHomeScreen
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:excel_karror/controllers/log_out/user_logout_controller.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/home/class_teacher_HOme/class_teacher_home.dart';
 import 'package:excel_karror/view/home/class_teacher_HOme/graph_class_teacher/assignmentGraph.dart';
@@ -29,10 +35,6 @@ import 'package:excel_karror/view/pages/teacher_list/teacher_list.dart';
 import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:excel_karror/view/widgets/icon/icon_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
 
 class ClassTeacherMainHomeScreen extends StatefulWidget {
   const ClassTeacherMainHomeScreen({super.key});
@@ -80,7 +82,7 @@ class _ClassTeacherMainHomeScreenState
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/excel_karror/excelKaroor.png',
+            appLogo,
             color: Colors.black,
             fit: BoxFit.cover,
           )),

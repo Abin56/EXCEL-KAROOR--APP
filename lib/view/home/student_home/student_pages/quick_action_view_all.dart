@@ -106,7 +106,7 @@ viewallMenus(BuildContext context) {
       SingleChildScrollView(
         child: Container(
           color: cWhite,
-          height: 620,
+          height: 420,
           width: double.infinity,
           child: Wrap(
             children: <Widget>[
@@ -128,7 +128,7 @@ viewallMenus(BuildContext context) {
               // ),
               Container(
                 color: cWhite,
-                height: 610,
+                height: 400,
                 child: AnimationLimiter(
                   child: GridView.count(
                     physics: const BouncingScrollPhysics(),

@@ -89,8 +89,8 @@ class TeacherGroupChatController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
                   child: GooglePoppinsEventsWidgets(
                     text: 'You',
                     fontsize: 12,
@@ -346,8 +346,8 @@ class TeacherGroupChatController extends GetxController {
       color: Colors.white,
       child: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 15),
+          const Padding(
+            padding: EdgeInsets.only(top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -521,7 +521,7 @@ class TeacherGroupChatController extends GetxController {
                   BoxDecoration(color: adminePrimayColor.withOpacity(0.3)),
               height: 60.h,
               width: 150.w,
-              child: Center(
+              child: const Center(
                 child: GooglePoppinsEventsWidgets(
                     text: 'Custom', fontsize: 15, fontWeight: FontWeight.bold),
               ),
@@ -542,7 +542,7 @@ class TeacherGroupChatController extends GetxController {
                           color: adminePrimayColor.withOpacity(0.3)),
                       height: 60.h,
                       width: 150.w,
-                      child: Center(
+                      child: const Center(
                         child: GooglePoppinsEventsWidgets(
                             text: 'Add All Students',
                             fontsize: 15,

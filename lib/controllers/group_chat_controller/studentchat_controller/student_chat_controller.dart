@@ -79,8 +79,8 @@ class StudentGroupChatMessageController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20),
                   child: GooglePoppinsEventsWidgets(
                     text: 'You',
                     fontsize: 12,

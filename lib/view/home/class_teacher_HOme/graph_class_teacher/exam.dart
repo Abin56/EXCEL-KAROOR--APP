@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 
 class ExamGraphClassTeacher extends StatefulWidget {
-   ExamGraphClassTeacher({super.key});
+   const ExamGraphClassTeacher({super.key});
     final Color dark = AppColors.blackColor;
   final Color normal = const Color.fromARGB(255, 227, 6, 6);
   final Color light = AppColors.yellowColor;

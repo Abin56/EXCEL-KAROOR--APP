@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
-
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:excel_karror/controllers/application_controller/application_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:excel_karror/controllers/chatgpt_Controller/chatgpt_controller.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:excel_karror/model/parent_model/parent_model.dart';
@@ -18,6 +16,7 @@ import 'package:excel_karror/view/pages/login/dujo_login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
@@ -72,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage(
-                        'assets/excel_karror/excel_karoor_logo.png',
+                        'assets/images/leptonlogo.png',
                       ),
                     )),
                   ),
@@ -93,13 +92,13 @@ class _SplashScreenState extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GoogleMonstserratWidgets(
-                        text: 'EXCEL',
+                        text: 'LEPTON',
                         fontsize: 25,
                         color: const Color.fromARGB(255, 230, 18, 3),
                         fontWeight: FontWeight.bold,
                       ),
                       GoogleMonstserratWidgets(
-                        text: ' KAROOR',
+                        text: ' VidyaVeechi',
                         fontsize: 25,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -342,7 +341,7 @@ Future<bool> onbackbuttonpressed(BuildContext context) async {
         content: const SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text('Do you want to exit from EXCEL KAROOR ?')
+              Text('Do you want to exit from Lepton VidyaVeechi ?')
             ],
           ),
         ),

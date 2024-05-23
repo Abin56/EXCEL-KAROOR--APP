@@ -12,8 +12,8 @@ import '../../../widgets/fonts/google_poppins.dart';
 import 'widgets/circle_avatar_image_widget.dart';
 import 'widgets/update_text_form_widget.dart';
 
-class ParentEditProfileScreen extends StatelessWidget {
-  ParentEditProfileScreen({super.key});
+class ParentEditProfileScreenFull extends StatelessWidget {
+  ParentEditProfileScreenFull({super.key});
   final ParentProfileEditController parentProfileEditController =
       Get.put(ParentProfileEditController());
 

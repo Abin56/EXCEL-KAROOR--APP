@@ -3,14 +3,15 @@
 import 'dart:developer';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:excel_karror/view/colors/colors.dart';
-import 'package:excel_karror/view/constant/sizes/sizes.dart';
-import 'package:excel_karror/view/widgets/button_container_widget.dart';
-import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:excel_karror/view/colors/colors.dart';
+import 'package:excel_karror/view/constant/sizes/sizes.dart';
+import 'package:excel_karror/view/home/teachers_home/homeworks/homework_list_view.dart';
+import 'package:excel_karror/view/widgets/button_container_widget.dart';
+import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 
 import '../../../model/teacher_model/home_works/homeworks.dart';
 import '../../widgets/drop_down/subject_dropdown.dart';
@@ -100,6 +101,26 @@ class _HomeWorkUploadState extends State<HomeWorkUpload> {
             fontSize: 20,
           ),
         ),
+        actions: [
+          GestureDetector(
+            onTap: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const HomeworksListView();
+                },
+              ),
+            ),
+            child: Text(
+              "View".tr,
+              style: GoogleFonts.poppins(
+                color: cWhite,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          kWidth20
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

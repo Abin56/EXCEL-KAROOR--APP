@@ -1,7 +1,7 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:excel_karror/view/pages/Notice/notice_school_display_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:excel_karror/view/pages/Notice/notice_school_display_page.dart';
 
 import '../../../../controllers/student_controller/student_notice_controller/student_notice_controller.dart';
 import '../../../widgets/fonts/google_poppins.dart';

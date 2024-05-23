@@ -68,7 +68,7 @@ class _NewStdHomePageState extends State<NewStdHomePage> {
                         padding: EdgeInsets.only(
                             top: 80.sp, right: 20.sp, left: 20.sp),
                         child:
-                            const NotificationPartOfStd() ///////////////////////////////////////////////////notification
+                               NotificationPartOfStd() ///////////////////////////////////////////////////notification
                         ),
                   ],
                 ),

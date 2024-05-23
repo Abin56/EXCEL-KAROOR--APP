@@ -33,3 +33,33 @@ class GooglePoppinsWidgets extends StatelessWidget {
     );
   }
 }
+
+class GooglePoppinsWidgetsPP extends StatelessWidget {
+  String text;
+  double fontsize;
+  FontWeight? fontWeight;
+  Color? color;
+  
+  GooglePoppinsWidgetsPP({
+    required this.text,
+    required this.fontsize,
+    this.fontWeight,
+    this.color,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      // overflow: TextOverflow.ellipsis,
+      style: GoogleFonts.poppins(
+        fontSize: fontsize.sp,
+        fontWeight: fontWeight,
+        color: color,
+       
+      ),
+    );
+  }
+}

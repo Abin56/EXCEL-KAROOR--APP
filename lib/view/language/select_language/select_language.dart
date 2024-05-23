@@ -128,7 +128,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                     SharedPreferencesHelper.setString("langCode", "en");
                     SharedPreferencesHelper.setString("countryCode", "US");
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                    return  SplashScreen();
+                    return  const SplashScreen();
                   },));
                    // Get.offAll( SplashScreen());
                   },

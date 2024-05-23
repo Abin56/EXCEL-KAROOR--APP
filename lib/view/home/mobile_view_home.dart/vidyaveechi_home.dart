@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/view/pages/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +34,7 @@ class MobileHomePage extends StatelessWidget {
                                 width: 50,
                                 color: Colors.transparent,
                                 child: Image.asset(
-                                  "assets/images/logo5.png",
+                                  officialLogo,
                                 ),
                               ),
                             ),
@@ -46,7 +47,7 @@ class MobileHomePage extends StatelessWidget {
                             //     width: screenSize.width / 15,
                             //     color: Colors.transparent,
                             //     child: Image.asset(
-                            //         "assets/excel_karror/excel_karoor_logo.png"),
+                            //         "assets/images/leptonlogo.png"),
                             //   ),
                             // ),
                             Column(

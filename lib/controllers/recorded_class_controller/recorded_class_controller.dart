@@ -13,6 +13,7 @@ import '../userCredentials/user_credentials.dart';
 
 class RecordedClassController {
     final formKey = GlobalKey<FormState>();
+    final formKey1 = GlobalKey<FormState>();
   TextEditingController chapterNumberController = TextEditingController();
   TextEditingController chapterNameController = TextEditingController();
 

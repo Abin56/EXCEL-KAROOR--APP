@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:excel_karror/view/constant/sizes/constant.dart';
 import 'package:excel_karror/view/home/events/event_display_school_level.dart';
-import 'package:excel_karror/view/home/parent_home/parent_profile_edit/parent_edit_profile.dart';
+import 'package:excel_karror/view/home/parent_home/parent_profile_edit/parent_edit_profile_full.dart';
 
 class ParentNameWidget extends StatelessWidget {
   const ParentNameWidget({
@@ -53,7 +53,7 @@ class ParentNameWidget extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return 
-                      ParentEditProfileScreen();
+                      ParentEditProfileScreenFull();
                       },));
                     }, icon: const Icon(Icons.now_widgets)))
           ],

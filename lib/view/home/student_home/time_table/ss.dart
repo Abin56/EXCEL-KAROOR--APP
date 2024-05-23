@@ -160,6 +160,7 @@ class _TimeTableState extends State<TimeTable> with SingleTickerProviderStateMix
   }
 }
 
+// ignore: must_be_immutable
 class DayWidget extends StatelessWidget {
   DayWidget({super.key, required this.dayName});
 
@@ -218,6 +219,7 @@ class DayWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     Color coll = colorCheck(
                         snapshot.data!.docs[index]['period']['selectColor']);
+                    // ignore: unused_local_variable
                     String coco = snapshot.data!.docs[index]['period']['selectColor']
                         .toString()
                         .substring(
@@ -316,6 +318,7 @@ class ColorParser {
   }
 }
 
+// ignore: must_be_immutable
 class PeriodShowingWidget extends StatelessWidget {
   PeriodShowingWidget(
       {super.key,

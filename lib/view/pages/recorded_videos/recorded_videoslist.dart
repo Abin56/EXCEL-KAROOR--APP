@@ -76,7 +76,7 @@ class RecordedVideosListScreen extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                      return Videoplayer(
+                                      return PlayVideoFlicker(
                                     videoUrl: snapshot.data!.docs[index]
                                         ['downloadUrl'],
                                   );

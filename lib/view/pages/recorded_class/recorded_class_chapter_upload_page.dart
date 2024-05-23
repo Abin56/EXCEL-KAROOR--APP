@@ -1,12 +1,13 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:excel_karror/sruthi/widget/exm_upload_textformfeild.dart';
-import 'package:excel_karror/view/colors/colors.dart';
-import 'package:excel_karror/view/constant/sizes/sizes.dart';
-import 'package:excel_karror/view/widgets/button_container_widget.dart';
-import 'package:excel_karror/widgets/Iconbackbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:excel_karror/sruthi/widget/exm_upload_textformfeild.dart';
+import 'package:excel_karror/view/colors/colors.dart';
+import 'package:excel_karror/view/constant/sizes/sizes.dart';
+import 'package:excel_karror/view/pages/recorded_class/recorded_chapters/recorded_chapters.dart';
+import 'package:excel_karror/view/widgets/button_container_widget.dart';
+import 'package:excel_karror/widgets/Iconbackbutton.dart';
 
 import '../../../controllers/recorded_class_controller/recorded_class_controller.dart';
 import '../../constant/sizes/constant.dart';
@@ -16,8 +17,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
   RecordedClassChapterUploadPage(
       {super.key, required this.subjectID, required this.subjectName});
   //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final RecordedClassController _recordedClassController =
-      Get.put(RecordedClassController());
+  final RecordedClassController rcrdClsCtr = Get.put(RecordedClassController());
   final String subjectID;
   final String subjectName;
   @override
@@ -33,32 +33,48 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
             Text("Chapter Upload".tr),
           ],
         ),
+        actions: [
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          RecordedClassChapters(subjectID: subjectID),
+                    ));
+              },
+              child: const Text(
+                "View",
+                style: TextStyle(fontSize: 18),
+              )),
+          const SizedBox(
+            width: 20,
+          ),
+        ],
         backgroundColor: adminePrimayColor,
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: _recordedClassController.formKey,
+          key: rcrdClsCtr.formKey,
           child: Column(
             children: [
               kHeight20,
               ExamUploadTextFormFeild(
                   validator: checkFieldEmpty,
-                  textfromController:
-                      _recordedClassController.chapterNumberController,
+                  textfromController: rcrdClsCtr.chapterNumberController,
                   text: "Chapter No.".tr,
                   hintText: "Chapter Number".tr),
               kHeight20,
               ExamUploadTextFormFeild(
                   validator: checkFieldEmpty,
-                  textfromController:
-                      _recordedClassController.chapterNameController,
+                  textfromController: rcrdClsCtr.chapterNameController,
                   text: "Chapter Name".tr,
                   hintText: "Chapter Name".tr),
               kHeight20,
               GestureDetector(
                 onTap: () {
-                  if (_recordedClassController.formKey.currentState?.validate() ?? false) {
-                    _recordedClassController
+                  if (rcrdClsCtr.formKey.currentState?.validate() ?? false) {
+                    rcrdClsCtr
                         .createChapter(subjectID, subjectName)
                         .then((value) {
                       return showDialog(
@@ -87,16 +103,15 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
                   height: 70.h,
                   width: 300.w,
                   child: Center(
-                    child: Obx(
-                        () => _recordedClassController.chapterIsLoading.value
-                            ? const CircularProgressIndicator()
-                            : Text(
-                                "Create Chapter".tr,
-                                style: GoogleFonts.montserrat(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w700),
-                              )),
+                    child: Obx(() => rcrdClsCtr.chapterIsLoading.value
+                        ? const CircularProgressIndicator()
+                        : Text(
+                            "Create Chapter".tr,
+                            style: GoogleFonts.montserrat(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700),
+                          )),
                   ),
                 ),
               ),
@@ -131,7 +146,7 @@ class RecordedClassChapterUploadPage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
+),
+);
+}
 }

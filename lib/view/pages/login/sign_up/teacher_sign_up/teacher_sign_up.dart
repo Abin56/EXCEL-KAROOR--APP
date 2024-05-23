@@ -2,7 +2,6 @@
 
 import 'dart:io';
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:excel_karror/controllers/sign_up_controller/teacher_signup_controller.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
@@ -12,6 +11,7 @@ import 'package:excel_karror/view/pages/login/users_login_screen/users_login_scr
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../model/Signup_Image_Selction/image_selection.dart';
@@ -81,9 +81,9 @@ class TeachersSignUpPage extends StatelessWidget {
                       ContainerImage(
                           height: 70.h,
                           width: 100.w,
-                          imagePath: 'assets/excel_karror/excel_karoor_logo.png'),
+                          imagePath: 'assets/images/leptonlogo.png'),
                       GoogleMonstserratWidgets(
-                        text: 'EXCEL KAROOR',
+                        text: 'Lepton VidyaVeechi',
                         fontsize: 20,
                         fontWeight: FontWeight.w500,
                       ),

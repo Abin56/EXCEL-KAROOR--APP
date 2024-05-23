@@ -1,8 +1,9 @@
 // ignore_for_file: file_names
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/view/widgets/container_image.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class LoginScreenDesign extends StatelessWidget {
   const LoginScreenDesign({
@@ -21,7 +22,7 @@ class LoginScreenDesign extends StatelessWidget {
             //  color: cblue,
             image: DecorationImage(
               // Image.asset(""),
-              image: AssetImage('assets/images/logo5.png'),
+              image: AssetImage(officialLogo),
             ),
           ),
         ),

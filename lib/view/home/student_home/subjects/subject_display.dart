@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/view/home/student_home/subjects/subjectchapter.dart';
@@ -8,6 +7,7 @@ import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:excel_karror/view/widgets/container_image.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -227,7 +227,7 @@ class PopUpcontainerWidget extends StatelessWidget {
         children: [
           kHeight20,
           ContainerImage(
-            imagePath: 'assets/excel_karror/excel_karoor_logo.png',
+            imagePath: 'assets/images/leptonlogo.png',
             height: 90.h,
             width: 120.w,
           ),

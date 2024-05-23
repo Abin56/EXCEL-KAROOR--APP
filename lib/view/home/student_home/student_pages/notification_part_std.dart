@@ -1,12 +1,16 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:excel_karror/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:excel_karror/utils/utils.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 
 class NotificationPartOfStd extends StatelessWidget {
-  const NotificationPartOfStd({super.key});
-
+  NotificationPartOfStd({super.key});
+  final PushNotificationController pushNotificationController =
+      Get.put(PushNotificationController());
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,7 +55,10 @@ class NotificationPartOfStd extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await pushNotificationController
+                              .removeAllNotification();
+                        },
                         child: const Text(
                           "yes",
                           style: TextStyle(color: cblack),
@@ -75,6 +82,7 @@ class NotificationPartOfStd extends StatelessWidget {
                   .collection('AllUsersDeviceID')
                   .doc(FirebaseAuth.instance.currentUser!.uid)
                   .collection("Notification_Message")
+                  .orderBy('dateTime',descending: true)
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -90,53 +98,63 @@ class NotificationPartOfStd extends StatelessWidget {
                               shape: const BeveledRectangleBorder(),
                               context: context,
                               builder: (context) {
-                                return Container(
-                                  color: Color(data['whiteshadeColor']),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        color: Color(data['containerColor']),
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 20),
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              IconData(
-                                                data['icon'],
-                                                fontFamily: 'MaterialIcons',
+                                server
+                                    .collection('AllUsersDeviceID')
+                                    .doc(FirebaseAuth.instance.currentUser!.uid)
+                                    .collection("Notification_Message")
+                                    .doc(data['docid'])
+                                    .update({'open': true});
+                                return SingleChildScrollView(
+                                  child: Container(
+                                    color: Color(data['whiteshadeColor']),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          color: Color(data['containerColor']),
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                IconData(
+                                                  data['icon'],
+                                                  fontFamily: 'MaterialIcons',
+                                                ),
+                                                size: 25,
+                                                color: Colors.white,
                                               ),
-                                              size: 25,
-                                              color: Colors.white,
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              data['headerText'],
-                                              // "Holiday",
-                                              style: const TextStyle(
-                                                  color: cWhite,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 20),
-                                        child: Text(
-                                          data['messageText'],
-                                          // " Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday",
-                                          textAlign: TextAlign.justify,
-                                          style: const TextStyle(
-                                            fontSize: 17,
-                                            color: cWhite,
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  data['headerText'],
+                                                  // "Holiday",
+                                                  style: const TextStyle(
+                                                      color: cWhite,
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
+                                          child: Text(
+                                            data['messageText'],
+                                            // " Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday Tommorow is Holiday",
+                                            textAlign: TextAlign.justify,
+                                            style: const TextStyle(
+                                              fontSize: 17,
+                                              color: cWhite,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -161,14 +179,29 @@ class NotificationPartOfStd extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            title: Text(
-                              data['headerText'],
-                              // "Holiday",
-                              style: const TextStyle(
-                                  color: Color.fromARGB(255, 48, 88, 86),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            title: data['open'] == true
+                                ? Text(
+                                    data['headerText'],
+                                    // "Holiday",
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 48, 88, 86),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                : Shimmer.fromColors(
+                                    baseColor: Colors.black,
+                                    highlightColor:
+                                        Colors.grey.withOpacity(0.1),
+                                    child: Text(
+                                      data['headerText'],
+                                      // "Holiday",
+                                      style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 48, 88, 86),
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
                             subtitle: Text(
                               data['messageText'],
                               // "Tommorow is Holiday",
@@ -198,7 +231,11 @@ class NotificationPartOfStd extends StatelessWidget {
                                         ),
                                       ),
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () async {
+                                          await pushNotificationController
+                                              .removeSingleNotification(
+                                                  data['docid']);
+                                        },
                                         child: const Text(
                                           "yes",
                                           style: TextStyle(color: cblack),

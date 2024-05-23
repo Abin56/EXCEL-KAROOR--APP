@@ -1,13 +1,13 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/view/pages/Subject/upload_studymaterial.dart';
 import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 
 import '../chapterdisplay.dart';
 import '../show_teacher_studymaterials.dart';

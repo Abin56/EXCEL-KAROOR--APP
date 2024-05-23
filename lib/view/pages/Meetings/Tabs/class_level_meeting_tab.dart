@@ -1,6 +1,6 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/view/pages/Meetings/meetings_class_display.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 import '../../../constant/sizes/sizes.dart';
 import '../../../widgets/fonts/google_poppins.dart';

@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAw8qS0a79WzECfaAXErLRwPF_wRq85cGs',
-    appId: '1:1084658282710:android:9df7cbeab1179170495977',
-    messagingSenderId: '1084658282710',
-    projectId: 'excelkarror-april-02',
-    storageBucket: 'excelkarror-april-02.appspot.com',
+    apiKey: 'AIzaSyCNm7KuQcHr2J9gUHpzBa7aJk2xt7zT8DQ',
+    appId: '1:341868646352:android:a07b1572ca82e87c9a33d5',
+    messagingSenderId: '341868646352',
+    projectId: 'vidya-veechi-8-feb-2024',
+    storageBucket: 'vidya-veechi-8-feb-2024.appspot.com',
   );
 }

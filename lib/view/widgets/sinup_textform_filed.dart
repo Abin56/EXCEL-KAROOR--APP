@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 class SinUpTextFromFiled extends StatelessWidget {
   String text;

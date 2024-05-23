@@ -1,11 +1,15 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
+import 'package:excel_karror/model/notification_model/notification_model.dart';
 import 'package:excel_karror/model/user_deviceID_model/user_devideID_model.dart';
 import 'package:excel_karror/utils/utils.dart';
+import 'package:excel_karror/view/constant/sizes/constant.dart';
 
 class PushNotificationController extends GetxController {
   final currentUID = FirebaseAuth.instance.currentUser!.uid;
@@ -19,6 +23,7 @@ class PushNotificationController extends GetxController {
   Future<void> allUSerDeviceID(String userrole) async {
     try {
       final UserDeviceIDModel userModel = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -28,7 +33,7 @@ class PushNotificationController extends GetxController {
       await server
           .collection('AllUsersDeviceID')
           .doc(currentUID)
-          .set(userModel.toMap());
+          .set(userModel.toMap(),SetOptions(merge: true));
     } catch (e) {
       log(e.toString());
     }
@@ -41,6 +46,7 @@ class PushNotificationController extends GetxController {
         UserCredentialsController.teacherModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel teacherModel = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -64,6 +70,7 @@ class PushNotificationController extends GetxController {
         UserCredentialsController.teacherModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel student = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -95,6 +102,7 @@ class PushNotificationController extends GetxController {
 
     try {
       final UserDeviceIDModel studentModel = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -117,6 +125,7 @@ class PushNotificationController extends GetxController {
     final String studentUID = UserCredentialsController.studentModel!.docid;
     try {
       final UserDeviceIDModel student = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -150,6 +159,7 @@ class PushNotificationController extends GetxController {
 
     try {
       final UserDeviceIDModel parentmodel = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -173,6 +183,7 @@ class PushNotificationController extends GetxController {
         UserCredentialsController.parentModel!.docid ?? currentUID;
     try {
       final UserDeviceIDModel parentmodel = UserDeviceIDModel(
+        message: false,
           batchID: UserCredentialsController.batchId!,
           classID: UserCredentialsController.classId!,
           devideID: deviceID.value,
@@ -194,5 +205,64 @@ class PushNotificationController extends GetxController {
     }
   }
 
+  updateOpenMessageStatus() async {
+    await server
+        .collection('AllUsersDeviceID')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+      //  .collection("Notification_Message")
+       // .doc(uid)
+        .update({'message': false});
+  }
   /////////////////////////////////// Parent Part
+  
+  Future<void> removeSingleNotification(String docid)async{
+  
+    await server
+    .collection("AllUsersDeviceID")
+    .doc(FirebaseAuth.instance.currentUser?.uid)
+    .collection('Notification_Message')
+    .doc(docid )
+    .delete()
+    .then((value) =>Get.back());
+  }
+  Future<void> removeAllNotification ()async{
+    await server
+    .collection("AllUsersDeviceID")
+    .doc(FirebaseAuth.instance.currentUser?.uid)
+    .collection("Notification_Message")
+    .get().then((value) async{
+      for (var i = 0; i < value.docs.length; i++) {
+        await server
+    .collection("AllUsersDeviceID")
+    .doc(FirebaseAuth.instance.currentUser?.uid)
+    .collection("Notification_Message")
+    .doc(value.docs[i].data()['docid']).delete();
+      }
+    Get.back();
+    });
+  }
+
+  Future<void> userNotification ({required String parentID, required IconData icon, required String messageText,required String headerText,required Color whiteshadeColor,required Color containerColor,})async{
+    final String docid = uuid.v1();
+   try {
+    log('Calling user notification');
+      final details = NotificationModel(
+      icon: icon,
+      messageText: messageText, 
+      headerText: headerText, 
+      whiteshadeColor: whiteshadeColor, 
+      containerColor: containerColor, 
+      open: false, 
+      docid: docid, 
+      dateTime: DateTime.now().toString());
+    await server
+    .collection("AllUsersDeviceID")
+    .doc(parentID)
+    .collection("Notification_Message")
+    .doc(docid)
+    .set(details.toMap());
+   } catch (e) {
+     
+   }
+  }
 }

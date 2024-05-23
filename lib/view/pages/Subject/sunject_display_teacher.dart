@@ -1,17 +1,16 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/pages/Subject/upload_studymaterial.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 import '../../constant/sizes/sizes.dart';
 import '../../widgets/fonts/google_poppins.dart';
 
 class SubjectWiseDisplayTeacher extends StatelessWidget {
-  const SubjectWiseDisplayTeacher({Key? key, required this.subjectID})
-      : super(key: key);
+  const SubjectWiseDisplayTeacher({super.key, required this.subjectID});
 
  final String subjectID;
 

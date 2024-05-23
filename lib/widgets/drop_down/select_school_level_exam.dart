@@ -9,8 +9,7 @@ var schoolLevelExamistValue;
 
 class GetSchoolLevelExamDropDownButton extends StatefulWidget {
   final String examType;
-  const GetSchoolLevelExamDropDownButton({Key? key, required this.examType})
-      : super(key: key);
+  const GetSchoolLevelExamDropDownButton({super.key, required this.examType});
 
   @override
   State<GetSchoolLevelExamDropDownButton> createState() =>

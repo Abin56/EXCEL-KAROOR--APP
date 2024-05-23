@@ -10,7 +10,7 @@ import '../../../view/widgets/container_image.dart';
 import 'subject_chapterwise_display.dart';
 
 class SubjectList extends StatelessWidget {
-  const SubjectList({Key? key}) : super(key: key);
+  const SubjectList({super.key});
 
   @override
   Widget build(BuildContext context) {

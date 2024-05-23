@@ -8,6 +8,7 @@ class UserDeviceIDModel {
   String uid;
   String userrole;
   String schoolID;
+  bool message;
   UserDeviceIDModel({
     required this.batchID,
     required this.classID,
@@ -15,6 +16,7 @@ class UserDeviceIDModel {
     required this.uid,
     required this.userrole,
     required this.schoolID,
+    required this.message,
   });
 
   UserDeviceIDModel copyWith({
@@ -24,6 +26,7 @@ class UserDeviceIDModel {
     String? uid,
     String? userrole,
     String? schoolID,
+    bool? message,
   }) {
     return UserDeviceIDModel(
       batchID: batchID ?? this.batchID,
@@ -32,6 +35,7 @@ class UserDeviceIDModel {
       uid: uid ?? this.uid,
       userrole: userrole ?? this.userrole,
       schoolID: schoolID ?? this.schoolID,
+      message: message ?? this.message,
     );
   }
 
@@ -43,17 +47,19 @@ class UserDeviceIDModel {
       'uid': uid,
       'userrole': userrole,
       'schoolID': schoolID,
+      'message': message,
     };
   }
 
   factory UserDeviceIDModel.fromMap(Map<String, dynamic> map) {
     return UserDeviceIDModel(
-      batchID: map['batchID'] ?? "",
-      classID: map['classID'] ?? "",
-      devideID: map['devideID'] ?? "",
-      uid: map['uid'] ?? "",
-      userrole: map['userrole'] ?? "",
-      schoolID: map['schoolID'] ?? "",
+      batchID: map['batchID'] ??'',
+      classID: map['classID'] ??'',
+      devideID: map['devideID'] ??'',
+      uid: map['uid'] ??'',
+      userrole: map['userrole'] ??'',
+      schoolID: map['schoolID'] ??'',
+      message: map['message'] ?? false,
     );
   }
 
@@ -64,28 +70,31 @@ class UserDeviceIDModel {
 
   @override
   String toString() {
-    return 'UserDeviceIDModel(batchID: $batchID, classID: $classID, devideID: $devideID, uid: $uid, userrole: $userrole, schoolID: $schoolID)';
+    return 'UserDeviceIDModel(batchID: $batchID, classID: $classID, devideID: $devideID, uid: $uid, userrole: $userrole, schoolID: $schoolID, message: $message)';
   }
 
   @override
   bool operator ==(covariant UserDeviceIDModel other) {
     if (identical(this, other)) return true;
-
-    return other.batchID == batchID &&
-        other.classID == classID &&
-        other.devideID == devideID &&
-        other.uid == uid &&
-        other.userrole == userrole &&
-        other.schoolID == schoolID;
+  
+    return 
+      other.batchID == batchID &&
+      other.classID == classID &&
+      other.devideID == devideID &&
+      other.uid == uid &&
+      other.userrole == userrole &&
+      other.schoolID == schoolID &&
+      other.message == message;
   }
 
   @override
   int get hashCode {
     return batchID.hashCode ^
-        classID.hashCode ^
-        devideID.hashCode ^
-        uid.hashCode ^
-        userrole.hashCode ^
-        schoolID.hashCode;
+      classID.hashCode ^
+      devideID.hashCode ^
+      uid.hashCode ^
+      userrole.hashCode ^
+      schoolID.hashCode ^
+      message.hashCode;
   }
 }

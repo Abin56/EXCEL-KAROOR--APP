@@ -6,18 +6,25 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:excel_karror/controllers/push_notification_controller/push_notification_controller.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
+import 'package:excel_karror/model/attendence_model/attendence-model.dart';
 import 'package:excel_karror/model/student_attendence_model/student_attendece_model.dart';
+import 'package:excel_karror/model/student_model/student_model.dart';
 import 'package:excel_karror/utils/utils.dart';
 import 'package:excel_karror/view/constant/sizes/constant.dart';
+import 'package:excel_karror/widgets/notification_color/notification_color_widget.dart';
 
 class AttendanceController extends GetxController {
   RxInt notificationTimer = 0.obs;
-  RxList abStudentUIDList = [].obs;
-  RxList abStsParentUIDList = [].obs;
+  List<AttendanceStudentModel> abStudentUIDList = [];
+  List<StudentModel> abStsParentUIDList = [];
   RxString schoolName = ''.obs;
   RxString dateformated = ''.obs;
   RxString timeformated = ''.obs;
+  final PushNotificationController pushNotificationController =
+      Get.put(PushNotificationController());
+
   dailyAttendanceController(String classID) async {
     final firebase = FirebaseFirestore.instance
         .collection('SchoolListCollection')
@@ -53,6 +60,7 @@ class AttendanceController extends GetxController {
   Future<void> getSubjectStudentAttendenceList({
     required String studentDocid,
     required String subjectDocid,
+    required String classID,
     required String studentName,
     required bool present,
     required String subjectName,
@@ -71,11 +79,11 @@ class AttendanceController extends GetxController {
           subjectName: subjectName,
           subjectID: subjectDocid,
           periodNo: periodNo);
-      server
+      await server
           .collection(UserCredentialsController.batchId!)
           .doc(UserCredentialsController.batchId)
           .collection('classes')
-          .doc(UserCredentialsController.classId)
+          .doc(classID)
           .collection('Students')
           .doc(studentDocid)
           .collection('MyAttendenceList')
@@ -95,7 +103,7 @@ class AttendanceController extends GetxController {
         headers: <String, String>{
           'Content-Type': 'application/json',
           'Authorization':
-              'key=AAAA_Iqr8NY:APA91bFCup0tJtmjXCZL-6fd1k1kuup-QAgSheDB0dy6nCJFk4RSPoJLT8kjn2v5o2dHUh3gjaO5-LWLb5sRMlRa4qWXVeetUm8h_YJyvdHykd9y1SNTcV8K7fqY_PTrnN8_8bVs9n8A'
+              'key=AAAAT5j1j9A:APA91bFcF5EBAVJGG-vU-ybkkpPQSw2y-a95cAsKTokuRYEeco9CU2NoFPL6ceQRZsMXYHoBmsRIEZTDrs-aY0CseLYQwgdSytHnajpDA0s4ZVJjlAJLI7IL-uhqgCqESvEeMsExmmBK'
         },
         body: jsonEncode(
           <String, dynamic>{
@@ -134,16 +142,14 @@ class AttendanceController extends GetxController {
         int.parse(vari.data()!['timeToDeliverAbsenceNotification']);
   }
 
-  Future<void> sendAbNotificationToParent(
-      String studentName, String subject) async {
+  Future<void> sendAbNotificationToParent(String subject) async {
     try {
-      await Future.delayed(Duration(minutes: notificationTimer.value))
-          .then((value) async {
+      await Future.delayed(const Duration(seconds: 10)).then((value) async {
         for (var i = 0; i < abStsParentUIDList.length; i++) {
           sendPushMessage(
-              abStsParentUIDList[i],
+              abStsParentUIDList[i].parentId,
               'Sir/Madam, your child was absent on for $subject period at ${timeformated.value} on ${dateformated.value}, സർ/മാഡം, ${dateformated.value} തീയതി ${timeformated.value} ഉണ്ടായിരുന്ന $subject പീരീഡിൽ നിങ്ങളുടെ കുട്ടി ഹാജരായിരുന്നില്ല',
-              'Absent Notification from $studentName');
+              'Absent Notification from ${abStsParentUIDList[i].studentName}');
         }
       });
       log("sendAbNotificationToParent Success....");
@@ -154,17 +160,38 @@ class AttendanceController extends GetxController {
   }
 
   Future<void> getAbStsParentDeviceID() async {
+    abStsParentUIDList.clear();
     try {
       for (var i = 0; i < abStudentUIDList.length; i++) {
-        final parentresult = await server
-            .collection(UserCredentialsController.batchId!)
-            .doc(UserCredentialsController.batchId)
+        await server
             .collection('AllStudents')
-            .doc(abStudentUIDList[i])
-            .get();
-
-        abStsParentUIDList.add(parentresult.data()?['parentId'] ?? '');
+            .doc(abStudentUIDList[i].uid)
+            .get()
+            .then((value) async {
+          final StudentModel data = StudentModel(
+              admissionNumber: value.data()?['admissionNumber'] ?? '',
+              alPhoneNumber: value.data()?['alPhoneNumber'] ?? '',
+              bloodgroup: value.data()?['bloodgroup'] ?? '',
+              classId: value.data()?['classId'] ?? '',
+              createDate: value.data()?['createDate'] ?? '',
+              dateofBirth: value.data()?['dateofBirth'] ?? '',
+              district: value.data()?['district'] ?? '',
+              docid: value.data()?['docid'] ?? '',
+              gender: value.data()?['gender'] ?? '',
+              guardianId: value.data()?['guardianId'] ?? '',
+              houseName: value.data()?['houseName'] ?? '',
+              parentId: value.data()?['parentId'] ?? '',
+              parentPhoneNumber: value.data()?['parentPhoneNumber'] ?? '',
+              place: value.data()?['place'] ?? '',
+              profileImageId: value.data()?['profileImageId'] ?? '',
+              profileImageUrl: value.data()?['profileImageUrl'] ?? '',
+              studentName: value.data()?['studentName'] ?? '',
+              studentemail: value.data()?['studentemail'] ?? '',
+              userRole: value.data()?['userRole'] ?? '');
+          abStsParentUIDList.add(data);
+        });
       }
+      print("Parent ID ${abStsParentUIDList.length}");
       log("getAbStsParentDeviceID Success....");
     } catch (e) {
       log("getAbStsParentDeviceID Failed ***");
@@ -172,10 +199,12 @@ class AttendanceController extends GetxController {
     }
   }
 
-  Future<void> getStudentAbsentList(
-      {required String subjectID,
-      required String subject,
-      required String studentName}) async {
+  Future<void> getStudentAbsentList({
+    required String periodID,
+    required String subject,
+    required String classID,
+  }) async {
+    abStudentUIDList.clear();
     try {
       final date = DateTime.now();
       DateTime parseDate = DateTime.parse(date.toString());
@@ -183,30 +212,52 @@ class AttendanceController extends GetxController {
       String monthwise = month.format(parseDate);
       final DateFormat formatter = DateFormat('dd-MM-yyyy');
       String formatted = formatter.format(parseDate);
-      await Future.delayed(Duration(minutes: notificationTimer.value))
-          .then((value) async {
-        final abResult = await server
+      await Future.delayed(const Duration(seconds: 10)).then((value) async {
+        await server
             .collection(UserCredentialsController.batchId!)
             .doc(UserCredentialsController.batchId)
             .collection('classes')
-            .doc(UserCredentialsController.classId)
+            .doc(classID)
             .collection('Attendence')
             .doc(monthwise)
             .collection(monthwise)
             .doc(formatted)
             .collection('Subjects')
-            .doc(subjectID)
+            .doc(periodID)
             .collection('AttendenceList')
-            .where('present', isEqualTo: false)
-            .get();
-        for (var i = 0; i < abResult.docs.length; i++) {
-          abStudentUIDList.add(abResult.docs[i].data()['uid']);
-        }
+            .get()
+            .then((value) async {
+          for (var i = 0; i < value.docs.length; i++) {
+            if (value.docs[i].data()['present'] == false) {
+              final AttendanceStudentModel data = AttendanceStudentModel(
+                  Date: value.docs[i].data()['Date'],
+                  present: value.docs[i].data()['present'],
+                  studentName: value.docs[i].data()['studentName'],
+                  uid: value.docs[i].data()['uid']);
+              abStudentUIDList.add(data);
+            } else {
+              return;
+            }
+          }
+        });
       }).then((value) async {
+        print('Student count${abStudentUIDList.length}');
         log("getStudentAbsentList Success....");
 
         await getAbStsParentDeviceID().then((value) async {
-          await sendAbNotificationToParent(studentName, subject);
+          await sendAbNotificationToParent(subject);
+        }).then((value) async {
+          for (var i = 0; i < abStsParentUIDList.length; i++) {
+            pushNotificationController.userNotification(
+                parentID: abStsParentUIDList[i].parentId,
+                icon: AlertNotifierSetup().icon,
+                messageText:
+                    '''Sir/Madam, your child was absent on for $subject period at ${timeformated.value} on ${dateformated.value}, സർ/മാഡം, ${dateformated.value} തീയതി ${timeformated.value} ഉണ്ടായിരുന്ന $subject പീരീഡിൽ നിങ്ങളുടെ കുട്ടി ഹാജരായിരുന്നില്ല',
+                'Absent Notification from ${abStsParentUIDList[i].studentName}''',
+                headerText: 'Absent on ${dateformated.value}',
+                whiteshadeColor: AlertNotifierSetup().whiteshadeColor,
+                containerColor: AlertNotifierSetup().containerColor);
+          }
         });
       });
       // ).then((value) async => await getAbStsParentDeviceID().then(

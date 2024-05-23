@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
         headers: <String, String>{
           'Content-Type': 'application/json',
           'Authorization':
-              'key=AAAA_Iqr8NY:APA91bFCup0tJtmjXCZL-6fd1k1kuup-QAgSheDB0dy6nCJFk4RSPoJLT8kjn2v5o2dHUh3gjaO5-LWLb5sRMlRa4qWXVeetUm8h_YJyvdHykd9y1SNTcV8K7fqY_PTrnN8_8bVs9n8A'
+              'key=AAAAT5j1j9A:APA91bFcF5EBAVJGG-vU-ybkkpPQSw2y-a95cAsKTokuRYEeco9CU2NoFPL6ceQRZsMXYHoBmsRIEZTDrs-aY0CseLYQwgdSytHnajpDA0s4ZVJjlAJLI7IL-uhqgCqESvEeMsExmmBK'
         },
         body: jsonEncode(
           <String, dynamic>{
@@ -236,72 +237,61 @@ class _ParentHomeScreenState extends State<ParentHomeScreen> {
     Get.bottomSheet(
         SingleChildScrollView(
           child: SizedBox(
-            height: 800,
+            height: 420,
             width: double.infinity,
             child: Wrap(
               children: <Widget>[
-                Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text("All Categories"),
-                    ),
-                    SingleChildScrollView(
-                      child: SizedBox(
-                        height: 400,
-                        child: GridView.count(
-                          padding: const EdgeInsets.all(10),
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                          children: List.generate(
-                            14,
-                            (index) => Container(
-                              decoration: BoxDecoration(
-                                color: cWhite,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              height: 60,
-
-                              // ignore: sort_child_properties_last
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20, top: 10, right: 20),
-                                // child: SingleChildScrollView(
-                                child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ParentContainerWidget(
-                                        icon: img[index],
-                                        //icon: Icons.view_list,
-                                        text: text[index],
-                                        onTap: () {
-                                          Navigator.pushReplacement(context,
-                                              MaterialPageRoute(
-                                            builder: (context) {
-                                              return screenNavigationOfParent[
-                                                  index];
-                                            },
-                                          ));
-
-                                          // Get.off(
-                                          //     screenNavigationOfParent[index]);
-                                        },
-                                      ),
-                                    ]),
-                                // ),//
-                              ),
-
-                              // GooglePoppinsWidgets(text: "Subject", fontsize: 16),
-                              // kHeight10,
-                            ),
-                          ),
+                SizedBox(
+                  height: 400,
+                  child: GridView.count(
+                    padding: const EdgeInsets.all(10),
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    children: List.generate(
+                      14,
+                      (index) => Container(
+                        decoration: BoxDecoration(
+                          color: cWhite,
+                          borderRadius: BorderRadius.circular(20),
                         ),
+                        height: 60,
+                                
+                        // ignore: sort_child_properties_last
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, top: 10, right: 20),
+                          // child: SingleChildScrollView(
+                          child: Column(
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                              children: [
+                                ParentContainerWidget(
+                                  icon: img[index],
+                                  //icon: Icons.view_list,
+                                  text: text[index],
+                                  onTap: () {
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(
+                                      builder: (context) {
+                                        return screenNavigationOfParent[
+                                            index];
+                                      },
+                                    ));
+                                
+                                    // Get.off(
+                                    //     screenNavigationOfParent[index]);
+                                  },
+                                ),
+                              ]),
+                          // ),//
+                        ),
+                                
+                        // GooglePoppinsWidgets(text: "Subject", fontsize: 16),
+                        // kHeight10,
                       ),
                     ),
-                    // const SizedBox(height: 20,)
-                  ],
+                  ),
                 )
               ],
             ),

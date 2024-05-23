@@ -1,16 +1,15 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 
 import '../../constant/sizes/sizes.dart';
 import '../../widgets/fonts/google_poppins.dart';
 import 'uploaded_recorded_classes_page.dart';
 
 class RecordedClassSubjectWisePage extends StatelessWidget {
-  const RecordedClassSubjectWisePage({Key? key, required this.subjectID})
-      : super(key: key);
+  const RecordedClassSubjectWisePage({super.key, required this.subjectID});
 
   final String subjectID;
 

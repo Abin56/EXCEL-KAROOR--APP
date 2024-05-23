@@ -605,6 +605,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                                 await widget
                                                     .attendanceController
                                                     .getSubjectStudentAttendenceList(
+                                                      classID: widget.classID,
                                                       studentDocid:
                                                           alllist[i].uid,
                                                       subjectDocid:
@@ -618,16 +619,7 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                                       periodNo: int.parse(
                                                           widget.periodNumber),
                                                     )
-                                                    .then((value) => widget
-                                                        .attendanceController
-                                                        .getStudentAbsentList(
-                                                            subjectID: widget
-                                                                .subjectID,
-                                                            subject: widget
-                                                                .subjectName,
-                                                            studentName: alllist[
-                                                                    i]
-                                                                .studentName));
+                                                    ;
                                               },
                                             );
                                           },
@@ -637,6 +629,16 @@ class _TakeAttenenceScreenState extends State<TakeAttenenceScreen> {
                                   },
                                 );
                               }
+                              widget
+                                                            .attendanceController
+                                                            .getStudentAbsentList(
+                                                          classID:
+                                                              widget.classID,
+                                                          periodID: widget
+                                                              .periodTokenID,
+                                                          subject: widget
+                                                              .subjectName,
+                                                        );
 
                               FirebaseFirestore.instance
                                   .collection("SchoolListCollection")

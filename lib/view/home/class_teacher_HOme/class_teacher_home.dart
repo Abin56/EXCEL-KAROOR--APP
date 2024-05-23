@@ -125,7 +125,7 @@ class ClassTeacherHome extends StatelessWidget {
                                     subtitle: const Text(
                                       "Tommorow is Holiday",
                                       style: TextStyle(
-                                        color: const Color.fromARGB(255, 11, 2, 74),
+                                        color: Color.fromARGB(255, 11, 2, 74),
                                       ),
                                     ),
                                   );

@@ -1,8 +1,10 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:excel_karror/controllers/sign_in_controller/teacher_login_controller.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/view/colors/colors.dart';
+
 import 'package:excel_karror/view/pages/login/users_login_screen/parent_login/parent_login.dart';
 import 'package:excel_karror/view/pages/login/users_login_screen/student%20login/student_login.dart';
 import 'package:excel_karror/view/pages/login/users_login_screen/teacher_login/teacher_login.dart';
@@ -10,9 +12,9 @@ import 'package:excel_karror/view/pages/login/users_login_screen/widgets/user_lo
 import 'package:excel_karror/view/widgets/container_image.dart';
 import 'package:excel_karror/view/widgets/fonts/google_monstre.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../model/Text_hiden_Controller/password_field.dart';
 
@@ -35,7 +37,7 @@ class UsersLoginScreen extends StatelessWidget {
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/excel_karror/excelKaroor.png',
+            appLogo,
             color: Colors.white,
             fit: BoxFit.cover,
           )),

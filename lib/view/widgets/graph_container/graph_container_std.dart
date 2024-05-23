@@ -1,8 +1,8 @@
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/widgets/fonts/google_salsa.dart';
-import 'package:flutter/material.dart';
 
 class GraphDetailsWidgetOfStd extends StatelessWidget {
   final String text;

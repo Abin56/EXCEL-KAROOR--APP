@@ -3,7 +3,7 @@ import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:flutter/material.dart';
 
 class Vpd extends StatefulWidget {
-  Vpd({super.key, required this.studentID});
+  const Vpd({super.key, required this.studentID});
 
  final String studentID;
 

@@ -1,8 +1,8 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 
 class SubjectWiseDisplay extends StatelessWidget {

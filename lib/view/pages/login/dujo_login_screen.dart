@@ -34,13 +34,13 @@ class DujoLoginScren extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GoogleMonstserratWidgets(
-                      text: 'EXCEL',
+                      text: 'LEPTON',
                       fontsize: 25,
                       color: const Color.fromARGB(255, 230, 18, 3),
                       fontWeight: FontWeight.bold,
                     ),
                     GoogleMonstserratWidgets(
-                      text: ' KAROOR',
+                      text: ' VidyaVeechi',
                       fontsize: 25,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

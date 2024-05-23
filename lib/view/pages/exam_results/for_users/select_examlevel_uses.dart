@@ -1,10 +1,10 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/pages/exam_results/for_users/select_exam_users.dart';
 import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../constant/sizes/sizes.dart';
 

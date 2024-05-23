@@ -1,12 +1,16 @@
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
-import 'package:excel_karror/view/colors/colors.dart';
-import 'package:excel_karror/view/home/teachers_home/notification_part_tcr.dart';
-import 'package:excel_karror/view/home/teachers_home/teacher_home.dart';
-import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:excel_karror/info/info.dart';
+import 'package:excel_karror/utils/utils.dart';
+import 'package:excel_karror/view/colors/colors.dart';
+import 'package:excel_karror/view/home/teachers_home/notification_part_tcr.dart';
+import 'package:excel_karror/view/home/teachers_home/teacher_home.dart';
+import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
+import 'package:excel_karror/widgets/animation/notification_animation.dart';
 
 import '../../../controllers/userCredentials/user_credentials.dart';
 import '../../../main.dart';
@@ -62,22 +66,57 @@ class _TeacherMainHomeScreenState extends State<TeacherMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/excel_karror/excelKaroor.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),
           ),
           backgroundColor: adminePrimayColor,
           actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NotificationPartTcr(),
-                      ));
-                },
-                icon: const Icon(Icons.warning_amber_rounded))
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: SizedBox(
+                height: 100,
+                child: Stack(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                     NotificationPartTcr(),
+                              ));
+                        },
+                        icon: const Icon(
+                          Icons.notifications_active,
+                          size: 25,
+                          color: Color.fromARGB(255, 244, 225, 58),
+                        )),
+                    StreamBuilder(
+                        stream: server
+                            .collection('AllUsersDeviceID')
+                            .doc(FirebaseAuth.instance.currentUser!.uid)
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return snapshot.data?.data()?['message'] == true
+                                ? const Positioned(
+                                  top: 25,
+                                  left: 20,
+                                    right: 7,
+                                    bottom: 19,
+                                    child: NotifierAnimator(),
+                                  )
+                                : const SizedBox();
+                          } else {
+                            return const SizedBox();
+                          }
+                        }),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
         body: pages[_page],

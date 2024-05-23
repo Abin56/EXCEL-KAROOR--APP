@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/view/widgets/fonts/google_monstre.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class SubjectChat extends StatelessWidget {
@@ -36,7 +36,7 @@ class SubjectChat extends StatelessWidget {
                 kWidth10,
                 CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  backgroundImage: AssetImage("assets/excel_karror/excel_karoor_logo.png"),
+                  backgroundImage: AssetImage("assets/images/leptonlogo.png"),
                   maxRadius: 18.h,
                 ),
                 Expanded(

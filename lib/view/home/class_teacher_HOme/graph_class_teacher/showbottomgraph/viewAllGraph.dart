@@ -21,7 +21,7 @@ viewExamGraph() {
               children: [
                 Column(
                   children: [
-                    GooglePoppinsEventsWidgets(text: "Exam", fontsize: 30),
+                    const GooglePoppinsEventsWidgets(text: "Exam", fontsize: 30),
                     SizedBox(
                       height: 500,
                       width: double.infinity,
@@ -47,12 +47,12 @@ viewAttenceGraphn() {
         color: cWhite,
         height: double.infinity,
         width: double.infinity,
-        child: Wrap(
+        child: const Wrap(
           children: <Widget>[
             Column(
               children: [
                 GooglePoppinsEventsWidgets(text: "text", fontsize: 15),
-                const SizedBox(
+                SizedBox(
                   height: 500,
                   width: double.infinity,
                   child: PrjectClassThrGraph(),
@@ -89,12 +89,12 @@ viewProjectGraph() {
     color: cWhite,
     height: double.infinity,
     width: double.infinity,
-    child: Wrap(
+    child: const Wrap(
       children: <Widget>[
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(
+              padding: EdgeInsets.only(
                 top: 0,
               ),
               child: GooglePoppinsEventsWidgets(
@@ -102,7 +102,7 @@ viewProjectGraph() {
                   fontsize: 22,
                   fontWeight: FontWeight.w500),
             ),
-            const SizedBox(
+            SizedBox(
               height: 300,
               width: double.infinity,
               child: AttendenceClassThrGraph(),

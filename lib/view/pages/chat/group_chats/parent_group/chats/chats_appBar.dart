@@ -144,7 +144,7 @@ class BootomSheet extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30)),
                                 height: 40,
                                 width: 140,
-                                child: Center(
+                                child: const Center(
                                   child: GooglePoppinsEventsWidgets(
                                     text: 'Transfer Group',
                                     fontsize: 12,
@@ -254,7 +254,7 @@ class BootomSheet extends StatelessWidget {
                                                   BorderRadius.circular(30)),
                                           height: 40,
                                           width: 140,
-                                          child: Center(
+                                          child: const Center(
                                             child: GooglePoppinsEventsWidgets(
                                               text: 'Deactivate',
                                               fontsize: 12,
@@ -345,7 +345,7 @@ class BootomSheet extends StatelessWidget {
                                                   BorderRadius.circular(30)),
                                           height: 40,
                                           width: 140,
-                                          child: Center(
+                                          child: const Center(
                                             child: GooglePoppinsEventsWidgets(
                                               text: 'Activate',
                                               fontsize: 12,

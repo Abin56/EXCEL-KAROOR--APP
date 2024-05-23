@@ -1,7 +1,8 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/main.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
@@ -57,7 +58,7 @@ class _GuardianMainHomeScreenState extends State<GuardianMainHomeScreen> {
             width: 115.w,
             child: Center(
                 child: Image.asset(
-              'assets/excel_karror/excelKaroor.png',
+              appLogo,
               color: Colors.white,
               fit: BoxFit.cover,
             )),

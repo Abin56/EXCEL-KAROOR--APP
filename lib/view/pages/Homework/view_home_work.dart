@@ -2,12 +2,13 @@ import 'dart:developer';
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:excel_karror/utils/utils.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/constant.dart';
+import 'package:excel_karror/view/pages/Homework/upload_homework.dart';
 import 'package:excel_karror/view/widgets/appbar_color/appbar_clr.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../controllers/userCredentials/user_credentials.dart';
 import '../../constant/sizes/sizes.dart';
@@ -170,56 +171,89 @@ class ViewHomeWorks extends StatelessWidget {
                                               padding:
                                                   EdgeInsets.only(top: 10.h),
                                               child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  GooglePoppinsWidgets(
-                                                      text: "Task : ",
-                                                      fontsize: 15.h,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                  InkWell(
-                                                    onTap: () async {
-                                                      return showDialog(
-                                                        context: context,
-                                                        barrierDismissible:
-                                                            false, // user must tap button!
-                                                        builder: (BuildContext
-                                                            context) {
-                                                          return AlertDialog(
-                                                            title: const Text(
-                                                                'Task'),
-                                                            content:
-                                                                SingleChildScrollView(
-                                                              child: ListBody(
-                                                                children: <Widget>[
-                                                                  Text(snaps.data
-                                                                              ?.docs[
-                                                                          index]
-                                                                      ['tasks'])
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            actions: <Widget>[
-                                                              TextButton(
-                                                                child:
+                                                  Row(
+                                                    children: [
+                                                      GooglePoppinsWidgets(
+                                                          text: "Task : ",
+                                                          fontsize: 15.h,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      InkWell(
+                                                        onTap: () async {
+                                                          return showDialog(
+                                                            context: context,
+                                                            barrierDismissible:
+                                                                false, // user must tap button!
+                                                            builder:
+                                                                (BuildContext
+                                                                    context) {
+                                                              return AlertDialog(
+                                                                title:
                                                                     const Text(
-                                                                        'Ok'),
-                                                                onPressed: () {
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .pop();
-                                                                },
-                                                              ),
-                                                            ],
+                                                                        'Task'),
+                                                                content:
+                                                                    SingleChildScrollView(
+                                                                  child:
+                                                                      ListBody(
+                                                                    children: <Widget>[
+                                                                      Text(snaps
+                                                                          .data
+                                                                          ?.docs[index]['tasks'])
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                actions: <Widget>[
+                                                                  TextButton(
+                                                                    child:
+                                                                        const Text(
+                                                                            'Ok'),
+                                                                    onPressed:
+                                                                        () {
+                                                                      Navigator.of(
+                                                                              context)
+                                                                          .pop();
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
                                                           );
                                                         },
-                                                      );
-                                                    },
+                                                        child:
+                                                            GooglePoppinsWidgets(
+                                                          text: "View",
+                                                          fontsize: 16.h,
+                                                          color:
+                                                              adminePrimayColor,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: () => Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) {
+                                                          return UploadHomework(
+                                                            task: snaps
+                                                                    .data?.docs[
+                                                                index]['tasks'],
+                                                          );
+                                                        },
+                                                      ),
+                                                    ),
                                                     child: GooglePoppinsWidgets(
-                                                      text: "View",
+                                                      text: "Submit Work",
                                                       fontsize: 16.h,
                                                       color: adminePrimayColor,
                                                       fontWeight:
-                                                          FontWeight.w500,
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ],

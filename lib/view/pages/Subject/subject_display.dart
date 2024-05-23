@@ -1,6 +1,8 @@
 
 import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:excel_karror/controllers/get_teacher_subject/get_sub.dart';
 import 'package:excel_karror/controllers/userCredentials/user_credentials.dart';
 import 'package:excel_karror/view/colors/colors.dart';
@@ -10,8 +12,6 @@ import 'package:excel_karror/view/widgets/container_image.dart';
 import 'package:excel_karror/view/widgets/fonts/google_monstre.dart';
 import 'package:excel_karror/view/widgets/fonts/google_poppins.dart';
 import 'package:excel_karror/widgets/Iconbackbutton.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class StudentSubjectScreen extends StatelessWidget {
  final TeacherSubjectController teacherSubjectController =

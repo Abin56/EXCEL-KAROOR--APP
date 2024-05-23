@@ -52,7 +52,7 @@ class ParentSignUpController extends GetxController {
       .collection('Parents');
 
   RxBool isLoading = RxBool(false);
-//for image uploading unique uid
+//for image uploading unique uid      0
   Uuid uuid = const Uuid();
 
   String? gender;

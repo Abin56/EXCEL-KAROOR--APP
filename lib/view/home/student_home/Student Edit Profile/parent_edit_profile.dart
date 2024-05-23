@@ -257,7 +257,7 @@ class CircleAvatharImageSelectionWidgetParent extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundColor: Color.fromARGB(255, 52, 50, 50),
+                    backgroundColor: Color.fromARGB(255, 247, 240, 240),
                     child: Icon(Icons.edit),
                   ),
                 ),

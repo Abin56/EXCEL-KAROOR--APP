@@ -1,12 +1,13 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
+import 'package:excel_karror/info/info.dart';
 import 'package:excel_karror/utils/utils.dart';
 import 'package:excel_karror/view/colors/colors.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/widgets/forget_password_page.dart';
 import 'package:excel_karror/widgets/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 
 import '../../../../../controllers/sign_in_controller/teacher_login_controller.dart';
@@ -39,7 +40,7 @@ class TeacherLoginScreen extends StatelessWidget {
           width: 115.w,
           child: Center(
               child: Image.asset(
-            'assets/excel_karror/excelKaroor.png',
+            appLogo,
             color: Colors.white,
             fit: BoxFit.cover,
           )),

@@ -1,11 +1,10 @@
-import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:excel_karror/view/constant/sizes/sizes.dart';
 import 'package:excel_karror/view/pages/search/search_school/search_school_searchdeligate.dart';
 import 'package:excel_karror/view/widgets/container_image.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_ui_layout/flutter_responsive_layout.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../../controllers/schoo_selection_controller/school_class_selection_controller.dart';
 import '../../../widgets/fonts/google_monstre.dart';
 import '../../../widgets/fonts/google_poppins.dart';
@@ -55,7 +54,7 @@ class SearchSchoolScreen extends StatelessWidget {
                   ContainerImage(
                       height: 80.h,
                       width: 110.w,
-                      imagePath: 'assets/excel_karror/excel_karoor_logo.png'),
+                      imagePath: 'assets/images/leptonlogo.png'),
                 ],
               ),
               GoogleMonstserratWidgets(
@@ -67,13 +66,13 @@ class SearchSchoolScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GoogleMonstserratWidgets(
-                    text: 'EXCEL ',
+                    text: 'LEPTON',
                     fontsize: 20,
                     color: const Color.fromARGB(255, 230, 18, 3),
                     fontWeight: FontWeight.bold,
                   ),
                   GoogleMonstserratWidgets(
-                    text: ' KAROOR',
+                    text: ' VidyaVeechi',
                     fontsize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
